@@ -1,0 +1,136 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"2MERlHgXUfSlVQnFAL3vX-58eZg/40WCQh0dr-nhA_maghESzovhhy8\"",
+ "discoveryVersion": "v1",
+ "id": "whatsthat:v1",
+ "name": "whatsthat",
+ "version": "v1",
+ "description": "This is an API",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://whatsthatimage.appspot.com/_ah/api/whatsthat/v1/",
+ "basePath": "/_ah/api/whatsthat/v1/",
+ "rootUrl": "https://whatsthatimage.appspot.com/_ah/api/",
+ "servicePath": "whatsthat/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "schemas": {
+  "DrawablePiece": {
+   "id": "DrawablePiece",
+   "type": "object",
+   "properties": {
+    "piece": {
+     "type": "boolean"
+    },
+    "x": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "y": {
+     "type": "integer",
+     "format": "int32"
+    }
+   }
+  },
+  "Drawing": {
+   "id": "Drawing",
+   "type": "object",
+   "properties": {
+    "pieces": {
+     "type": "array",
+     "items": {
+      "$ref": "DrawablePiece"
+     }
+    }
+   }
+  },
+  "Rebus": {
+   "id": "Rebus",
+   "type": "object",
+   "properties": {
+    "answer": {
+     "type": "string"
+    },
+    "drawing": {
+     "$ref": "Drawing"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    }
+   }
+  }
+ },
+ "resources": {
+  "rebus": {
+   "methods": {
+    "random": {
+     "id": "whatsthat.rebus.random",
+     "path": "rebus",
+     "httpMethod": "GET",
+     "response": {
+      "$ref": "Rebus"
+     }
+    },
+    "set": {
+     "id": "whatsthat.rebus.set",
+     "path": "uploadRebus",
+     "httpMethod": "POST",
+     "request": {
+      "$ref": "Rebus"
+     },
+     "response": {
+      "$ref": "Rebus"
+     }
+    }
+   }
+  }
+ }
+}

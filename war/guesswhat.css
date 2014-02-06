@@ -1,0 +1,59 @@
+
+@font-face {  
+  font-family: wgroenev;  
+  src: url( wgroenev.ttf ) format("truetype");  
+} 
+
+body {
+	font-family: wgroenev, verdana, sans-serif;
+	font-size: 20pt;
+}
+
+#debug {
+	font-family: monaco, courier new;
+	font-size: 8pt;
+}
+
+#dialog, #loading {
+	position: absolute;
+	top: 200px;
+	left: 500px;
+}
+
+#dialog {
+	cursor: pointer;
+	top: 150px !important;
+	left: 350px !important;
+	-webkit-filter: none;
+}
+
+#dialog:hover {
+	-webkit-filter: brightness(0.25);	
+}
+
+h1, h2 {
+	font-weight: bold;
+	font-size: 40pt;
+}
+
+.btn {
+	cursor: pointer; width: 80px; height: 80px;
+	/*-webkit-transition: all 0.5s;*/
+	-webkit-filter: none;
+}
+
+.active {
+	-webkit-filter: grayscale(100%); 
+}
+
+.btn:hover {
+	-webkit-filter: brightness(0.25); 
+}
+
+canvas {
+	 border: 1px solid black;
+	-webkit-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 2px 15px 1px rgba(0, 0, 0, 0.
+}
+
+.grayscale {-webkit-filter: grayscale(100%); }

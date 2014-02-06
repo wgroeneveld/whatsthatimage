@@ -1,0 +1,58 @@
+<html>
+
+<head>
+
+<link rel="stylesheet" href="guesswhat.css"></link>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/guesswhat.js"></script>
+<script type="text/javascript" src="js/guesswhat-ui.js"></script>
+
+<script type="text/javascript">
+function init() {
+	console.log("init");
+	$(function() {
+		gapi.client.load('whatsthat', 'v1', function() {
+			Guesswhat.initCanvas($("#canvas"), gapi.client.whatsthat);
+			Guesswhat.UI.init();
+		}, 'https://whatsthatimage.appspot.com/_ah/api');		
+	});
+}
+</script>
+<title>Guess what?</title>
+</head>
+
+<body>
+
+<h2>Guess what? - By <a href="http://twitter.com/jefklak" target="_blank">http://twitter.com/jefklak</a></h2>
+
+<canvas id="canvas" width="900" height="400"></canvas>
+<div style="float: left; margin-right: 10px;" id="buttons">
+	<img src="img/Chat.png" id="btn_guess" data-toggle="answering" class="btn" alt="guess" title="guess!" />
+	<div style="clear: both;"></div>
+	<img src="img/Lamp.png" id="btn_write" data-toggle="writing" class="btn" alt="write" title="write!" />
+</div>
+
+<div style="float: right; height: 400px; overflow: scroll;" id="debug">debug blabla in here</div>
+
+<p>
+	<div id="answering" class="toggled">
+		<form>
+			<label for="answer">What's this? (your ANSWER)</label>
+			<input type="text" id="answerInput" />
+			<input type="button" id="answer" value="Guess!" />
+		</form>
+	</div>
+	<div id="writing" style="display: none;">
+		<form>
+			<label for="question">What's this? (your QUESTION)</label>
+			<input type="text" id="questionInput" />
+			<input type="button" id="submitRebus" value="Submit your beautiful drawing!" />
+		</form>
+	</div>
+</p>
+
+<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=init"></script>
+
+</body>
+
+</html>
